@@ -1,0 +1,74 @@
+<div class="bg-black min-h-screen">
+  <header class="text-white border-b border-b-gray-800">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <h1 class="text-3xl font-bold text-[#0082ca]">
+        Clientes<span class="text-white">-</span>
+        <span class="text-[#0082ca]">Estevez</span>
+      </h1>
+
+      <nav class="hidden md:flex gap-8 text-white">
+        <a class="hover:text-[#0082ca] transition" routerLink="/">Inicio</a>
+        <a
+          class="hover:text-[#0082ca] transition"
+          routerLink="/register-customer"
+          >Crear Cliente</a
+        >
+      </nav>
+
+      <button
+        class="hidden md:block px-4 py-2 rounded-xl bg-[#0082ca] hover:bg-[#0083cacc] transition"
+        (click)="logout()"
+      >
+        Cerrar Sesión
+      </button>
+
+      <button
+        class="md:hidden text-sky-300"
+        id="menuBtn"
+        (click)="toggleMobileMenu()"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-7 w-7"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"
+          />
+        </svg>
+      </button>
+    </div>
+
+    @if(mobileOpen()) {
+    <nav
+      id="mobileMenu"
+      class="md:hidden flex-col bg-black/95 text-sky-200 px-6 py-4 space-y-4 border-t border-sky-900 animate-[slideDown_0.25s_ease-out]"
+    >
+      <a class="block hover:text-sky-400 transition" routerLink="/">Inicio</a>
+      <a
+        class="block hover:text-sky-400 transition"
+        routerLink="/register-customer"
+        >Crear Cliente</a
+      >
+
+      <button
+        class="w-full px-4 py-2 rounded-xl bg-[#0082ca] transition"
+        (click)="logout()"
+      >
+        Cerrar Sesión
+      </button>
+    </nav>
+    }
+  </header>
+
+  <main
+    class="backdrop-blur-lg rounded-2xl p-8 w-full xl:w-[500px] shadow-2xl text-center mx-auto"
+  >
+    <router-outlet />
+  </main>
+</div>

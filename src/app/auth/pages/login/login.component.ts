@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import {
   FormBuilder,
   FormGroup,
@@ -7,6 +7,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'login',
@@ -17,10 +18,11 @@ import { AuthService } from '../../services/auth.service';
 export class LoginComponent {
   private fb = inject(FormBuilder);
   private authService = inject(AuthService);
+  private router = inject(Router);
 
   public loginForm: FormGroup = this.fb.group({
-    email: ['root@test.com', [Validators.required, Validators.email]],
-    password: ['password', [Validators.required, Validators.minLength(6)]],
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required, Validators.minLength(6)]],
   });
 
   login() {
@@ -29,11 +31,17 @@ export class LoginComponent {
     const loginSuccess: boolean = this.authService.login(userLogin);
     console.log({ loginSuccess });
     if (!loginSuccess) {
-      //TODO: MENSAJE DE ERROR CON SweetAlert2
+      Swal.fire(
+        'Error',
+        'Email o Contraseña incorrectos, intenta otra vez.',
+        'error'
+      );
+
       return;
     }
 
-    //TODO: Mensaje de Success con SweetAlert2 y redirigir a la pantalla del dashboard.
+    this.router.navigate(['/']);
+
     return;
   }
 }

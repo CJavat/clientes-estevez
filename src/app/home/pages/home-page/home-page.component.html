@@ -1,0 +1,42 @@
+<div class="max-w-5xl mx-auto mt-8">
+  <h2 class="text-2xl font-bold text-[#0082ca] mb-4">Usuarios Registrados</h2>
+
+  <div class="bg-black/90 rounded-xl p-4 shadow-xl">
+    <ul class="space-y-4">
+      @for (customer of customers(); track customer.id) {
+      <li
+        class="flex items-center justify-between p-4 bg-black rounded-xl border border-gray-700 hover:border-[#0082ca] transition"
+      >
+        <div class="flex items-center">
+          <div>
+            <h3 class="text-white text-lg font-semibold">
+              {{ customer.fullName | titlecase }}
+            </h3>
+            <p class="text-sky-300 text-sm">
+              {{ customer.email }}
+            </p>
+            <p class="text-sky-300 text-sm">
+              {{ customer.phoneNumber }}
+            </p>
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-4">
+          <a
+            class="px-3 py-1 text-center rounded-full text-sm font-medium bg-[#0082ca]/20 text-[#0082ca] border border-[#0082ca]/40"
+            [routerLink]="['/edit-customer', customer.id]"
+          >
+            Editar
+          </a>
+          <button
+            class="px-3 py-1 rounded-full text-sm font-medium bg-[#ca0000]/20 text-[#ca0000] border border-[#0082ca]/40"
+            (click)="deleteCustomer(customer.id, customer.email)"
+          >
+            Eliminar
+          </button>
+        </div>
+      </li>
+      }
+    </ul>
+  </div>
+</div>

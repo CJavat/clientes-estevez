@@ -1,0 +1,58 @@
+<div class="max-w-5xl px-2 mx-auto mt-8">
+  <h2 class="text-2xl font-bold text-[#0082ca] mb-4">Editar Cliente</h2>
+
+  <div class="border border-black/90 rounded-md p-4 shadow-xl">
+    <form
+      class="space-y-6 text-center"
+      [formGroup]="editCustomerForm"
+      (ngSubmit)="editCustomer()"
+    >
+      <div>
+        <input
+          type="text"
+          class="w-full px-5 py-2 border border-gray-700 rounded-md text-white bg-gray-950 placeholder-gray-500 focus:outline-none focus:border-sky-500 focus:bg-gray-900 transition-all duration-300"
+          placeholder="Nombre completo"
+          formControlName="fullName"
+          required
+        />
+      </div>
+
+      <div>
+        <input
+          type="text"
+          class="w-full px-5 py-2 border border-gray-700 rounded-md text-white bg-gray-950 placeholder-gray-500 focus:outline-none focus:border-sky-500 focus:bg-gray-900 transition-all duration-300"
+          placeholder="Email"
+          formControlName="email"
+          required
+        />
+      </div>
+
+      <div>
+        <input
+          type="text"
+          class="w-full px-5 py-2 border border-gray-700 rounded-md text-white bg-gray-950 placeholder-gray-500 focus:outline-none focus:border-sky-500 focus:bg-gray-900 transition-all duration-300"
+          formControlName="phoneNumber"
+          placeholder="Teléfono"
+        />
+      </div>
+
+      <div>
+        <input
+          type="password"
+          class="w-full px-5 py-2 border border-gray-700 rounded-md text-white bg-gray-950 placeholder-gray-500 focus:outline-none focus:border-sky-500 focus:bg-gray-900 transition-all duration-300"
+          placeholder="Contraseña"
+          formControlName="password"
+          required
+        />
+      </div>
+
+      <button
+        [disabled]="!editCustomerForm.valid"
+        type="submit"
+        class="disabled:bg-gray-500 disabled:text-gray-950 disabled:cursor-not-allowed w-full md:w-2/4 py-2 text-[#0082ca] rounded-md font-medium hover:bg-[#0082ca] hover:text-white transform hover:-translate-y-1 transition-all duration-300 shadow-lg hover:shadow-xl border border-blue-500/30"
+      >
+        Actualizar Cliente
+      </button>
+    </form>
+  </div>
+</div>
