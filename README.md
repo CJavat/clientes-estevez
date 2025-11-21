@@ -4,6 +4,19 @@
 
 _Aplicación web con registro de clientes y login._
 
+### Instrucciones
+
+1. Instalar paquetes de node con `npm install.
+2. Correr proyecto con `ng serve -o`.
+3. Hay un usuario y contraseña por defecto.
+
+   ```
+   email: 'root@test.com',
+   password: 'password',
+   ```
+
+_Es todo lo necesario para correr el proyecto_
+
 ## 🧩 Instrucciones
 
 ### Objetivo:
